@@ -1,11 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "rsuite/dist/rsuite.css";
+.calendar-todo-list {
+  text-align: left;
+  padding: 0;
+  list-style: none;
+}
 
+.calendar-todo-list li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calendar-todo-item-badge {
+  vertical-align: top;
+  margin-top: 8px;
+  width: 6px;
+  height: 6px;
+}  
+
+/* Defining Color Scheme */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --Menu-bg: #F2DD1B;
+  --Icon-col: #F24E1E;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,19 +34,83 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+.Menu-container{
+  background-color: var(--Menu-bg);
+  opacity: 0.66;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5rem;
+  position: fixed;
+  width: 100%;
+  
+}
+.Menu-container>div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 10px;
+}
+.Menu-container>*:nth-child(2){
+ 
+  width: 3rem;
+  
+    
+}
+.logo{
+  font-family:'just me again down here';
+  font-size: 1.5rem;
+}
+.Calendar-container{
+  width: calc(100% - 100px);
+  height: 500px;
+  border: #F24E1E 2px  solid;
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  justify-items: center;
+  align-items: center;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+.Calendar-header{
+  display: grid;
+  padding-top: 20px;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  justify-items: center;
+}
+.Calendar-header-text:hover{
+  border-color: var(--Icon-col);
+  
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+/* #root{ padding: 10px; } */
+.Calendar-body{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 1px;
+  border: #000000 2px solid;
+  width: calc(100% - 50px);
+  justify-items: center;
+  /* same width for all columns */
+
+
+  
+ 
+
+  
+}
+.Calendar-day{
+  height: 50px;
+  border: #000000 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  
 }
